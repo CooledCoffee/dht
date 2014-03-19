@@ -1,0 +1,16 @@
+*.adb
+*.asm
+*.bin
+*.cdb
+*.hashes
+*.hex
+*.ihx
+*.lk
+*.lst
+*.map
+*.mcu8051ide
+*.mem
+*.omf
+*.rel
+*.rst
+*.sym
