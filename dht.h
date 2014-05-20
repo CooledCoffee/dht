@@ -38,12 +38,12 @@ bool dht_read(DhtResult* p_result) {
     char buffer[5];
 
     // init
-    DHT_DATA = 0;
+    P_DHT = 0;
     _dht_sleep(30);
-    DHT_DATA = 1;
-    WAIT_FOR_LOW(DHT_DATA);
-    WAIT_FOR_HIGH(DHT_DATA);
-    WAIT_FOR_LOW(DHT_DATA);
+    P_DHT = 1;
+    WAIT_FOR_LOW(P_DHT);
+    WAIT_FOR_HIGH(P_DHT);
+    WAIT_FOR_LOW(P_DHT);
 
     // read buffer
     buffer[0] = _dht_read_byte();
@@ -62,13 +62,13 @@ char _dht_read_byte() {
     char i;
     char result = 0;
     for (i = 0; i < 8; i++) {
-        WAIT_FOR_HIGH(DHT_DATA);
+        WAIT_FOR_HIGH(P_DHT);
         NOP32 // 45us
         NOP8
         result <<= 1;
-        if (DHT_DATA)
+        if (P_DHT)
             result++;
-        WAIT_FOR_LOW(DHT_DATA);
+        WAIT_FOR_LOW(P_DHT);
     }
     return result;
 }
